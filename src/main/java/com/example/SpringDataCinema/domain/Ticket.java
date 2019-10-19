@@ -13,7 +13,7 @@ public class Ticket {
     private String seat;
     private BigDecimal price;
     @ManyToOne
-    @JoinColumn(name = "column")
+    @JoinColumn(name = "session_id")
     private Session session;
 
     public Session getSession() {
