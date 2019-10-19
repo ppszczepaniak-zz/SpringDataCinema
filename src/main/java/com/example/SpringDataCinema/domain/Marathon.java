@@ -1,10 +1,9 @@
 package com.example.SpringDataCinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Entity
@@ -15,6 +14,34 @@ public class Marathon {
     private Long id;
     private String name;
     private LocalDateTime startTime;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //fetch type EAGER (means all data from DB will be filled automatically - all movies from the list)
+    @JoinTable( //creates additional "helper table"
+            name = "marathon_movie",
+            joinColumns = @JoinColumn(name = "marathon_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> movies;
+
+    public List<Movie> getMovies() {
+        if (movies == null) {
+            movies = new ArrayList<>();
+        }
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public Marathon(Long id, String name, LocalDateTime startTime) {
+        this.id = id;
+        this.name = name;
+        this.startTime = startTime;
+    }
+
+    public Marathon() {
+    }
 
     public Long getId() {
         return id;
@@ -40,14 +67,6 @@ public class Marathon {
         this.startTime = startTime;
     }
 
-    public Marathon(Long id, String name, LocalDateTime startTime) {
-        this.id = id;
-        this.name = name;
-        this.startTime = startTime;
-    }
-
-    public Marathon() {
-    }
 
     /* these are best implementations of equals() & hashCode() for entities objects
     why? read this: https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/

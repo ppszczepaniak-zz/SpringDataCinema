@@ -1,11 +1,32 @@
 package com.example.SpringDataCinema.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
 public class Movie {
+
+    //relation to Marathons
+    @ManyToMany(mappedBy = "movies", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //mappedBy - for two-way relations
+    // it means that Marathon is the "owner" of the relation and it points to field "movies" in Marathon class
+    //cascade - set for two actions: creation and update of data in entity
+    //WARNING: do NOT use CascadeType.REMOVE and CascadeType.ALL in @ManyToMany relation, not sure why yet...
+    private List<Marathon> marathons;
+
+    public List<Marathon> getMarathons() {
+        if (marathons == null) {
+            marathons = new ArrayList<>(); //better to return empty list than null
+        }
+        return marathons;
+    }
+
+    public void setMarathons(List<Marathon> marathons) {
+        this.marathons = marathons;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //generetes ID via Postgres Sequence

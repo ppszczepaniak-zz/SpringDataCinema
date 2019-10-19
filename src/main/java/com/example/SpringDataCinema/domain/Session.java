@@ -40,8 +40,8 @@ public class Session {
     }
 
     /* these are best implementations of equals() & hashCode() for entities objects
-why? read this: https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-*/
+    why? read this: https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
+    */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
