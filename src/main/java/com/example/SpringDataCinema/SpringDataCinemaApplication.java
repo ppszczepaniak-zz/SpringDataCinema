@@ -9,5 +9,5 @@ public class SpringDataCinemaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringDataCinemaApplication.class, args);
 	}
-
+//
 }
