@@ -1,4 +1,7 @@
 package com.example.SpringDataCinema.repository;
 
-public interface MarathonRepository {
+import com.example.SpringDataCinema.domain.Marathon;
+import org.springframework.data.repository.CrudRepository;
+
+public interface MarathonRepository extends CrudRepository<Marathon,Long> {
 }
