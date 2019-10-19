@@ -17,6 +17,7 @@ public class Marathon {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //fetch type EAGER (means all data from DB will be filled automatically - all movies from the list)
+    //default for ManyToMany is LAZY
     @JoinTable( //creates additional "helper table"
             name = "marathon_movie",
             joinColumns = @JoinColumn(name = "marathon_id"),

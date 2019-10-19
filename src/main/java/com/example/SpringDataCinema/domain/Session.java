@@ -1,10 +1,9 @@
 package com.example.SpringDataCinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Entity
@@ -14,6 +13,53 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private LocalDateTime startTime;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
+
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    //TODO understand oprhanRemoval
+    private List<Ticket> tickets;
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public List<Ticket> getTickets() {
+
+        if (tickets == null) {
+            tickets = new ArrayList<>(); //better to return empty list than null
+        }
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    //additional method - automatically connects ticket with session
+
+    public void addticket(Ticket ticket) {
+        getTickets().add(ticket);
+        ticket.setSession(this);
+    }
 
     public Session(Long id, LocalDateTime startTime) {
         this.id = id;

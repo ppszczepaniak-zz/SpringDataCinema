@@ -1,9 +1,6 @@
 package com.example.SpringDataCinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.StringJoiner;
 
@@ -15,6 +12,17 @@ public class Ticket {
     private Long id;
     private String seat;
     private BigDecimal price;
+    @ManyToOne
+    @JoinColumn(name = "column")
+    private Session session;
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     public Long getId() {
         return id;

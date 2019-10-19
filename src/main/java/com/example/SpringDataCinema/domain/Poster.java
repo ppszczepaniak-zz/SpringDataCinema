@@ -1,9 +1,6 @@
 package com.example.SpringDataCinema.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.StringJoiner;
 
 @Entity
@@ -13,7 +10,17 @@ public class Poster {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String filePath;
+    @OneToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "id") //name of FK and PK in DB
+    private Movie movie;
 
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 
     public Poster() {
     }
