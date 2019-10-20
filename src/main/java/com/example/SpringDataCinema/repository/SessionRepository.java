@@ -21,9 +21,9 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     //must add @NamedEntityGraph in entity (Session) class!
     //more info here: https://www.baeldung.com/spring-data-jpa-named-entity-graphs
     @EntityGraph(value = "Session.tickets", type = EntityGraph.EntityGraphType.LOAD)
-    //OR JUST USE THIS: @EntityGraph(attributePaths = {"tickets"}) <- no need to use @NamedEntityGraph in Session class
+    //OR JUST USE THIS (no need to use @NamedEntityGraph in Session class):
+    //@EntityGraph(attributePaths = {"tickets"})
     Optional<Session> readById(Long id);
 
     //Optional - makes sure it works even when Session is null (won't receive NullPointerException)
-
 }
