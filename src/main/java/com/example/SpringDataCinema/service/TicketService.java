@@ -13,4 +13,5 @@ public interface TicketService {
 
     void cancelTicket(Long ticketId);
 
+    //couldAdd getTicketById
 }
