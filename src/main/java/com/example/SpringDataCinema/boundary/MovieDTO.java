@@ -13,8 +13,8 @@ public class MovieDTO {
     private Integer requiredAge;
     private String posterFilePath;
 
-    public MovieDTO() { //TODO do I need this here?
-    }
+//    public MovieDTO() { //do I need this here?
+//    }
 
     public MovieDTO(Long id, String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath) {
         this.id = id;
