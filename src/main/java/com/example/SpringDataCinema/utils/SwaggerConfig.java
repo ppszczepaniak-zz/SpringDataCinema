@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 //used to enable Swagger, more info here: https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
-//USE Address: http://localhost:8080//swagger-ui.html
+//USE Address: http://localhost:8080/swagger-ui.html
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

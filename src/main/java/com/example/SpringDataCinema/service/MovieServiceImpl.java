@@ -42,7 +42,7 @@ public class MovieServiceImpl implements MovieService {
     private void createPoster(Movie movie, String posterFilePath) {
         Poster poster = new Poster(null, posterFilePath);
         poster.setMovie(movie);
-        posterRepository.save(poster); //
+        posterRepository.save(poster);
     }
 
     @Override
