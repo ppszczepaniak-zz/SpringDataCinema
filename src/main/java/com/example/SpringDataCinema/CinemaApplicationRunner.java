@@ -46,7 +46,6 @@ public class CinemaApplicationRunner implements CommandLineRunner {
     }
 
     private void movieServiceInvocations() {
-
         Page<Movie> allMovies = movieService.getAllMovies(PageRequest.of(1, 3, Sort.by("title")));
         LOG.info("1. AllMovies. TotalElements={}, TotalPages={}", allMovies.getTotalElements(), allMovies.getTotalPages());
         allMovies.get().forEach(movie -> LOG.info(" {}", movie));
@@ -61,7 +60,7 @@ public class CinemaApplicationRunner implements CommandLineRunner {
 
         Movie movieWithId7 = movieService.getMovie(7L).get();
         LOG.info("4. movieWithId7 - {}", movieWithId7);
-        movieService.updateMovie(7L, movieWithId7.getTitle(), EMovieCategory.DRAMA, 140, movieWithId7.getDescritpion(), 18, "/posterGreenBook.png");
+        movieService.updateMovie(7L, movieWithId7.getTitle(), EMovieCategory.DRAMA, 140, movieWithId7.getDescription(), 18, "/posterGreenBook.png");
 
         Movie movieWithId7AfterUpdate = movieService.getMovie(7L).get();
         LOG.info("5. movieWithId7AfterUpdate - {}", movieWithId7AfterUpdate);
@@ -81,13 +80,12 @@ public class CinemaApplicationRunner implements CommandLineRunner {
 
         Session sessionWithId15 = sessionService.getSession(15L).get();
         LOG.info("8. sessionWithId15 - {}, MovieTitle='{}', Room='{}'", sessionWithId15, sessionWithId15.getMovie().getTitle(), sessionWithId15.getRoom().getName());
-        // sessionWithId15.getTickets().forEach(ticket -> LOG.info(" {}", ticket));
-        // this won't work, cause this:
+        //sessionWithId15.getTickets().forEach(ticket -> LOG.info(" {}", ticket));
+        // this won't work, cause this (gives LazyInitializationException)
         // LAZY - zależności nie są uzupełniane. Zostaną “dociągnięte” gdy będzie do nich odwołanie.
         // Należy tutaj zaznaczyć, że to odwołanie musi być w transakcji (adnotacja @Transactional w serwisie),
         // ponieważ gdy odwołanie będzie wyżej, poza transakcją, to wystąpi wyjątek org.hibernate.LazyInitializationException,
         // który świadczy właśnie o tym że próbujemy dostać się do danych które jeszcze nie zostały uzupełnione, a uzupełnić się ich nie da bo jesteśmy poza transakcją.
-
 
         Session sessionWithId15WithTickets = sessionService.getSessionWithTickets(15L).get();
         LOG.info("9. sessionWithId15withTickets - {}, MovieTitle='{}', Room='{}'", sessionWithId15WithTickets, sessionWithId15WithTickets.getMovie().getTitle(), sessionWithId15WithTickets.getRoom().getName());
@@ -113,7 +111,6 @@ public class CinemaApplicationRunner implements CommandLineRunner {
         List<Ticket> ticketsOnSessionWithId15AfterUpdates = ticketService.getAllTicketsForSession(15L);
         LOG.info("13. ticketsOnSessionWithId15AfterUpdates. AmountOfTickets={}", ticketsOnSessionWithId15AfterUpdates.size());
         ticketsOnSessionWithId15AfterUpdates.forEach(ticket -> LOG.info(" {}", ticket));
-
     }
 
     private void marathonServiceInvocations() {

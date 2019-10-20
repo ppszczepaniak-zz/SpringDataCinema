@@ -77,7 +77,7 @@ public class MovieServiceImpl implements MovieService {
         Movie movie = movieOptional.get(); //returns Movie object from Optional
         movie.setTitle(title);
         movie.setCategory(category);
-        movie.setDescritpion(description);
+        movie.setDescription(description);
         movie.setLength(length);
         movie.setRequiredAge(requiredAge);
 

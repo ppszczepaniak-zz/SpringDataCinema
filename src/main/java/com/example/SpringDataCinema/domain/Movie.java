@@ -3,7 +3,6 @@ package com.example.SpringDataCinema.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
@@ -36,18 +35,18 @@ public class Movie {
     @Enumerated(EnumType.STRING) //this makes DB store String of Enum, not number (so HORROR, instead of 0, etc.)
     private EMovieCategory category;
     private Integer length;
-    private String descritpion;
+    private String description;
     private Integer requiredAge;
 
     public Movie() {
     }
 
-    public Movie(Long id, String title, EMovieCategory category, Integer length, String descritpion, Integer requiredAge) {
+    public Movie(Long id, String title, EMovieCategory category, Integer length, String description, Integer requiredAge) {
         this.id = id;
         this.title = title;
         this.category = category;
         this.length = length;
-        this.descritpion = descritpion;
+        this.description = description;
         this.requiredAge = requiredAge;
     }
 
@@ -83,12 +82,12 @@ public class Movie {
         this.length = length;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getRequiredAge() {
@@ -122,7 +121,7 @@ public class Movie {
                 .add("title='" + title + "'")
                 .add("category=" + category)
                 .add("length=" + length)
-                .add("descritpion='" + descritpion + "'")
+                .add("description='" + description + "'")
                 .add("requiredAge=" + requiredAge)
                 .toString();
     }
