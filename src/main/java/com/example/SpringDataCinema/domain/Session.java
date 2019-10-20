@@ -23,7 +23,7 @@ public class Session {
     private Room room;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
-    //TODO understand oprhanRemoval
+    //orpahan removal: more restrict deleting of entity objects, more here: https://www.objectdb.com/java/jpa/persistence/delete
     private List<Ticket> tickets;
 
     public Movie getMovie() {

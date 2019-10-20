@@ -20,7 +20,7 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     //this fills up tickets list for session (Fetch Type was lazy, so we fill up missing data here)
     //TODO add @NamedEntityGraph in entity class!
-    @EntityGraph(value = "Session.tickets",type = EntityGraph.EntityGraphType.LOAD)
+    @EntityGraph(value = "Session.tickets", type = EntityGraph.EntityGraphType.LOAD)
     Optional<Session> readById(Long id);
 
     //Optional - makes sure it works even when Session is null (won't receive NullPointerException)
