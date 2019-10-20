@@ -27,13 +27,10 @@ public class TicketController {
         //use @JsonIgnore at correct property such as:
         //@JsonIgnore
         //private int forgetThisField;
-
     }
 
 
     //TODO later:
     //Long newTicket(Long sessionId, String seat, BigDecimal price);
     //void cancelTicket(Long ticketId);
-
-
 }
