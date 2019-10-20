@@ -88,6 +88,8 @@ public class CinemaApplicationRunner implements CommandLineRunner {
         // który świadczy właśnie o tym że próbujemy dostać się do danych które jeszcze nie zostały uzupełnione, a uzupełnić się ich nie da bo jesteśmy poza transakcją.
 
         Session sessionWithId15WithTickets = sessionService.getSessionWithTickets(15L).get();
+       //Session sessionWithId15WithTickets = sessionService.getSession(15L).get();
+
         LOG.info("9. sessionWithId15withTickets - {}, MovieTitle='{}', Room='{}'", sessionWithId15WithTickets, sessionWithId15WithTickets.getMovie().getTitle(), sessionWithId15WithTickets.getRoom().getName());
         sessionWithId15WithTickets.getTickets().forEach(ticket -> LOG.info(" {}", ticket));
 

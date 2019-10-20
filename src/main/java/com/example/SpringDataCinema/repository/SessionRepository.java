@@ -17,10 +17,11 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     List<Session> findAllByStartDate(Date date);
 
 
-    //this fills up tickets list for session (Fetch Type was lazy, so we fill up missing data here)
+    //this fills up tickets list for session (Fetch Type was LAZY, so we fill up missing data here)
     //must add @NamedEntityGraph in entity (Session) class!
     //more info here: https://www.baeldung.com/spring-data-jpa-named-entity-graphs
     @EntityGraph(value = "Session.tickets", type = EntityGraph.EntityGraphType.LOAD)
+    //OR JUST USE THIS: @EntityGraph(attributePaths = {"tickets"}) <- no need to use @NamedEntityGraph in Session class
     Optional<Session> readById(Long id);
 
     //Optional - makes sure it works even when Session is null (won't receive NullPointerException)

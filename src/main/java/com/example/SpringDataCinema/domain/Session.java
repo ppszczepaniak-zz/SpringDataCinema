@@ -25,6 +25,7 @@ public class Session {
     private Room room;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
+    //in @OneToMany - FetchType is LAZY(!) - see SessionRepository
     //orpahan removal: more restrict deleting of entity objects, more here: https://www.objectdb.com/java/jpa/persistence/delete
     private List<Ticket> tickets;  //this name must be in @NamedAttributeNode(!)
 
