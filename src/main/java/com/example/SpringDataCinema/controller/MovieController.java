@@ -1,5 +1,6 @@
 package com.example.SpringDataCinema.controller;
 
+import com.example.SpringDataCinema.boundary.MovieDTO;
 import com.example.SpringDataCinema.domain.EMovieCategory;
 import com.example.SpringDataCinema.domain.Movie;
 import com.example.SpringDataCinema.service.MovieService;
@@ -31,6 +32,19 @@ public class MovieController {
     @ResponseStatus(HttpStatus.CREATED) //201
     public Long addMovie(@RequestBody Movie movie, @RequestHeader String posterFilePath) {
         return movieService.createMovie(movie.getTitle(), movie.getCategory(), movie.getLength(), movie.getDescription(), movie.getRequiredAge(), posterFilePath);
+    }
+
+    //addMovie using MovieDTO object to simplify JSON
+    @PostMapping("/addDTO")
+    @ResponseStatus(HttpStatus.CREATED) //201
+    public Long addMovieDTO(@RequestBody MovieDTO movieDTO) {
+        return movieService.createMovie(movieDTO.getTitle(), movieDTO.getCategory(), movieDTO.getLength(), movieDTO.getDescription(), movieDTO.getRequiredAge(), movieDTO.getPosterFilePath());
+
+        //OR we could do it like this: (could be useful when not all properties are created - like in Ticket.session)
+        /*
+        Movie tempMovie = movieDTO.createMoviefromMovieDTO();
+        return movieService.createMovie(tempMovie.getTitle(), tempMovie.getCategory(), tempMovie.getLength(), tempMovie.getDescription(), tempMovie.getRequiredAge(), movieDTO.getPosterFilePath());
+        */
     }
 
     @GetMapping("/get") //http://localhost:8080/movie/get
