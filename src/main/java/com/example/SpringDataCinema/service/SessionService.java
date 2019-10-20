@@ -2,6 +2,7 @@ package com.example.SpringDataCinema.service;
 
 import com.example.SpringDataCinema.domain.Session;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,7 @@ public interface SessionService {
 
     Optional<Session> getSessionWtihTickets(Long sessionId);
 
-    List<Session> getSessionsInDate(LocalDateTime date);
+    List<Session> getSessionsInDate(LocalDate date);
 
     void removeSession(Long sessionId);
 
