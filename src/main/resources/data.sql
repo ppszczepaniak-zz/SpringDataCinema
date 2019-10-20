@@ -5,11 +5,11 @@ INSERT INTO room (id,name,capacity,description) VALUES (4, 'Sala 4',144,'12 rzę
 
 INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (5, 'After', 'ROMANTIC',106, 'Ekranizacja bestsellerowej powieści... ',18);
 INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (6, 'Avengers: Koniec gry', 'ACTION',182, 'Połowa życia w kosmosie...',15);
-INSERT INTO movie (id,title,category,length,description, required_Age) VALUES (7, 'Green Book ', 'COMEDY',130, 'Tony, drobny cwaniaczek z Bronxu...',15);
-INSERT INTO movie (id,title,category,length,description, required_Age) VALUES (8, 'Hellboy', 'ACTION',121, 'Kultowy superbohater z piekła rodem...',18);
+INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (7, 'Green Book ', 'COMEDY',130, 'Tony, drobny cwaniaczek z Bronxu...',15);
+INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (8, 'Hellboy', 'ACTION',121, 'Kultowy superbohater z piekła rodem...',18);
 INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (9,' Impostor ', 'HORROR',90, 'Sarah, chcąc uciec przed przeszłością...',18);
-INSERT INTO movie (id,title,category,length,description, required_Age) VALUES (10, 'Przemytnik', 'DRAMA',116, 'Eastwood wciela się w rolę Earla Stona...',15);
-INSERT INTO movie (id,title,category,length,description, required Age) VALUES (11, 'Niedobrani', 'COMEDY',121, 'Fred nie jest typem amanta... ',15);
+INSERT INTO movie (id,title,category,length,description,required_Age) VALUES (10, 'Przemytnik', 'DRAMA',116, 'Eastwood wciela się w rolę Earla Stona...',15);
+INSERT INTO movie (id,title,category,length,description,required Age) VALUES (11, 'Niedobrani', 'COMEDY',121, 'Fred nie jest typem amanta... ',15);
 
 INSERT INTO poster (id,movie_id,file_path) VALUES (12,8, '/images/posterHellboy.png');
 INSERT INTO poster (id,movie_id,file_path) VALUES (13,9, '/images/posterInmpostor.png');

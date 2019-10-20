@@ -18,7 +18,8 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
 
     //this fills up tickets list for session (Fetch Type was lazy, so we fill up missing data here)
-    //TODO add @NamedEntityGraph in entity class!
+    //must add @NamedEntityGraph in entity (Session) class!
+    //more info here: https://www.baeldung.com/spring-data-jpa-named-entity-graphs
     @EntityGraph(value = "Session.tickets", type = EntityGraph.EntityGraphType.LOAD)
     Optional<Session> readById(Long id);
 

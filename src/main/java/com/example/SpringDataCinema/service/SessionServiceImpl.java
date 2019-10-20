@@ -59,7 +59,7 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public Optional<Session> getSessionWtihTickets(Long sessionId) {
+    public Optional<Session> getSessionWithTickets(Long sessionId) {
         return sessionRepository.readById(sessionId); //gives session with ticketList via EntityGraph (cause Fetch Type was LAZY)
         //TODO check if works without @NamedEntityGraph in Tickets or Session.ticket
     }

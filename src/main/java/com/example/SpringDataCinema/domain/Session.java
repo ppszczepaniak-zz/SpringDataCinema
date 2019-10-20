@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.StringJoiner;
 
 @Entity
+//used so @EntityGraph in SessionRepository works properly, more info here: https://www.baeldung.com/spring-data-jpa-named-entity-graphs
+@NamedEntityGraph(name = "Session.tickets", attributeNodes = @NamedAttributeNode("tickets"))
 public class Session {
 
     @Id
@@ -24,7 +26,7 @@ public class Session {
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
     //orpahan removal: more restrict deleting of entity objects, more here: https://www.objectdb.com/java/jpa/persistence/delete
-    private List<Ticket> tickets;
+    private List<Ticket> tickets;  //this name must be in @NamedAttributeNode(!)
 
     public Movie getMovie() {
         return movie;

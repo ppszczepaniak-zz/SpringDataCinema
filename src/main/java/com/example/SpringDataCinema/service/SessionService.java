@@ -13,7 +13,7 @@ public interface SessionService {
 
     Optional<Session> getSession(Long sessionId);
 
-    Optional<Session> getSessionWtihTickets(Long sessionId);
+    Optional<Session> getSessionWithTickets(Long sessionId);
 
     List<Session> getSessionsInDate(LocalDate date);
 
