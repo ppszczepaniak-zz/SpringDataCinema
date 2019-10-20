@@ -26,8 +26,8 @@ public class MovieDTO {
         this.posterFilePath = posterFilePath;
     }
 
-    public Movie createMoviefromMovieDTO(){ //creates Movie object
-        return new Movie(this.id,this.title,this.category,this.length,this.description,this.requiredAge);
+    public Movie createMoviefromMovieDTO() { //creates Movie object
+        return new Movie(this.id, this.title, this.category, this.length, this.description, this.requiredAge);
     }
 
     public Long getId() {
