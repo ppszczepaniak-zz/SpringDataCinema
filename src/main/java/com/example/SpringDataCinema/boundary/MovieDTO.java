@@ -4,6 +4,8 @@ package com.example.SpringDataCinema.boundary;
 import com.example.SpringDataCinema.domain.EMovieCategory;
 import com.example.SpringDataCinema.domain.Movie;
 
+
+//Data Transfer Object
 public class MovieDTO {
     private Long id;
     private String title;
@@ -12,9 +14,6 @@ public class MovieDTO {
     private String description;
     private Integer requiredAge;
     private String posterFilePath;
-
-//    public MovieDTO() { //do I need this here?
-//    }
 
     public MovieDTO(Long id, String title, EMovieCategory category, Integer length, String description, Integer requiredAge, String posterFilePath) {
         this.id = id;
