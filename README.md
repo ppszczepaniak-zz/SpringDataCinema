@@ -1,5 +1,5 @@
 # SpringDataCinema
-Cinema system app with Spring Data + PostgreSQL
+Cinema system app with Spring Data + PostgreSQL + RESTController with SwaggerUI
 
 All tests commanded by CinemaApplicationRunner (implements CommandLineRunner) 
 Results shown in console (so far)
