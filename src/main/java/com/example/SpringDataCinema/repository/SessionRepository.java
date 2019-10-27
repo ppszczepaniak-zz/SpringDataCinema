@@ -13,6 +13,7 @@ import java.util.Optional;
 public interface SessionRepository extends JpaRepository<Session, Long> {
 
     //we create custom query using JPQL (part of JPA) (WARNING: query is slightly different than SQL query!)
+    //we could write naitve PostgreSQL query by adding parameter "nativeQuery = true"
     @Query(value = "SELECT s FROM Session s WHERE function('DATE_TRUNC','day',s.startTime)=?1")
     List<Session> findAllByStartDate(Date date);
 
