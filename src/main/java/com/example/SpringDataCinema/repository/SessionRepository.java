@@ -25,6 +25,6 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     //OR JUST USE THIS (no need to use @NamedEntityGraph in Session class):
     //@EntityGraph(attributePaths = {"tickets"})
     Optional<Session> readById(Long id);
-
+//test
     //Optional - makes sure it works even when Session is null (won't receive NullPointerException)
 }
